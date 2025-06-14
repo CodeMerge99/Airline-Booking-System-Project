@@ -30,7 +30,34 @@ async function getAirplanes(){
     }
 }
 
+
+async function getAirplane(id){
+    try {
+        const airplane = await airplaneRepository.get(id);
+        return airplane;
+    } catch (error) {
+        if(error.StatusCode == StatusCodes.NOT_FOUND){
+            throw new AppError("Requested Airplane is not present",error.StatusCode);
+        }
+        throw new AppError('Cannot fetch the data for the given airplane',StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+
+async function destroyAirplane(id){
+    try {
+        const response = await airplaneRepository.destroy(id);
+        return response; 
+    } catch (error) {
+        if(error.StatusCode == StatusCodes.NOT_FOUND){
+            throw new AppError("The airplane you requested to delete is not present",error.StatusCode);
+        }
+        throw new AppError('Cannot fetch Data of all Airplanes ',StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
 module.exports ={
     createAirplane,
-    getAirplanes
+    getAirplanes,
+    getAirplane,
+    destroyAirplane
 }
