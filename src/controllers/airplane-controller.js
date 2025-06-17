@@ -15,6 +15,7 @@ async function createAirplane(req,res){
                 capacity : req.body.capacity
 
             });
+            SuccessResponse.data = airplane;
             return res.status(StatusCodes.CREATED).json(SuccessResponse);
          } catch (error) {
             return res.status(Error.StatusCode).json(ErrorResponse);
