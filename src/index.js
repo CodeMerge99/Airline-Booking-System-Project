@@ -11,5 +11,7 @@ app.use('/api',apiRoutes);
 
 app.listen(ServerConfig.PORT,()=>{
     console.log(` App is Active on Port No: ${ServerConfig.PORT} `);
-   
+    //bad code alert //
+    
+
 })
