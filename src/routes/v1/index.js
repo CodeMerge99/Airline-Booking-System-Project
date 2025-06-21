@@ -7,10 +7,12 @@ const{infocontrollers} = require("../../controllers");
 const airplaneRoutes = require("./airplane-routes");
 const cityRoutes = require("./city-routes");
 const airportRoutes = require("./airport-routes");
+const flightRoutes = require("./flight-routes");
 
 router.use("/airplanes",airplaneRoutes);
 router.use("/cities",cityRoutes);
 router.get("/info",infocontrollers.info);
-router.use("/airports",airplaneRoutes);
+router.use("/airports",airportRoutes);
+router.use("/flights",flightRoutes);
 
 module.exports = router;
